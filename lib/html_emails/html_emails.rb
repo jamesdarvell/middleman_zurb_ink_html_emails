@@ -19,7 +19,7 @@ class HtmlEmails < Middleman::Extension
         w['class'] = (w['class'].split << 'last').join(' ') unless w['class'].include? 'last'
       end
 
-      html_doc.to_html
+      html_doc.to_xhtml
     end
 
     def is_top_level_render?(path)

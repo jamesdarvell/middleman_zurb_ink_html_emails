@@ -5,6 +5,9 @@
 require 'lib/html_emails/html_emails'
 activate :html_emails
 
+# The format must be xhtml
+set :haml, :format => :xhtml
+
 ###
 # Compass
 ###
