@@ -1,0 +1,12 @@
+---
+title: Example with two columns in one row
+---
+= ink_container(:classes => %w{main area}) do
+  = ink_row do
+    =ink_column('eight') do
+      %td
+        Eight Columns
+
+    =ink_column('four', :last=>true) do
+      %td
+        Four Columns
