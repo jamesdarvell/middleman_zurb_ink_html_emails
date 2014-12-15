@@ -3,15 +3,8 @@ title: Example with two columns in one row
 ---
 = ink_container(:classes => %w{main area}) do
   = ink_row do
-    %td.wrapper
-      %table.eight.columns
-        %tr
-          %td
-            Eight Columns
-          %td.expander
-    %td.wrapper.last
-      %table.four.columns
-        %tr
-          %td
-            Four Columns
-          %td.expander
+    =ink_column('eight') do
+      Eight Columns
+
+    =ink_column('four', :last=>true) do
+      Four Columns

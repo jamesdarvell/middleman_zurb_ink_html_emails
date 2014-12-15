@@ -1,0 +1,6 @@
+%td{:class => 'wrapper' + (last ? ' last' : '')  }
+  %table{:class => (classes << [size, 'columns']).join(' ')}
+    %tr
+      %td
+        = content
+      %td.expander
