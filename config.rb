@@ -1,4 +1,11 @@
 ###
+# Html Emails
+###
+
+require 'lib/html_emails'
+activate :html_emails
+
+###
 # Compass
 ###
 
