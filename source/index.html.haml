@@ -1,21 +1,18 @@
 ---
-title: A new HTML email
+title: Example with two columns in one row
 ---
-
-%table.container
-  %tr
-    %td
-      %table.row
-        %tr
-          %td.wrapper
-            %table.eight.columns
-              %tr
-                %td
-                  Eight Columns
-                %td.expander
-          %td.wrapper.last
-            %table.four.columns
-              %tr
-                %td
-                  Four Columns
-                %td.expander
+= ink_container do
+  %table.row
+    %tr
+      %td.wrapper
+        %table.eight.columns
+          %tr
+            %td
+              Eight Columns
+            %td.expander
+      %td.wrapper.last
+        %table.four.columns
+          %tr
+            %td
+              Four Columns
+            %td.expander
