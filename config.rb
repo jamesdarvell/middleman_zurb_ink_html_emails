@@ -2,7 +2,7 @@
 # Html Emails
 ###
 
-require 'lib/html_emails'
+require 'lib/html_emails/html_emails'
 activate :html_emails
 
 ###

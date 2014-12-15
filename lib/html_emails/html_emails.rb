@@ -1,4 +1,7 @@
+require_relative 'ink_base_module'
+
 class HtmlEmails < Middleman::Extension
+  extend InkBaseModule
 
   def initialize(app, options_hash={}, &block)
     super
@@ -22,6 +25,12 @@ class HtmlEmails < Middleman::Extension
     def is_top_level_render?(path)
       path.include? 'layout.haml'
     end
+  end
+
+  helpers do
+    require_relative 'helpers/ink_basic_helpers'
+    require_relative 'helpers/ink_content_helpers'
+    require_relative 'helpers/ink_grid_helpers'
   end
 end
 
