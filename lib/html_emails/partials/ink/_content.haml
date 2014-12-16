@@ -1,0 +1,6 @@
+%td{:class => (classes + content_types).join(' '), :style =>  (style if defined? style)}
+  -if content_types.include? 'center'
+    %center
+      = content
+  -else
+    = content
