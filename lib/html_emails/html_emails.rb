@@ -6,6 +6,8 @@ class HtmlEmails < Middleman::Extension
   def initialize(app, options_hash={}, &block)
     super
 
+    app.set :partials_dir, partials_path_relative_to_source(app.config)
+
     app.after_render do |content, path, locs, template_class|
       content = HtmlEmails.prepare_final_page(content) if HtmlEmails.is_top_level_render?(path)
       content
@@ -48,6 +50,22 @@ class HtmlEmails < Middleman::Extension
     require_relative 'helpers/ink_basic_helpers'
     require_relative 'helpers/ink_content_helpers'
     require_relative 'helpers/ink_grid_helpers'
+  end
+
+  private
+  def partials_path_relative_to_source(config)
+    partials_path = Pathname.new (get_partials_path)
+    source_path = Pathname.new (config[:source])
+
+    partials_path.relative_path_from(source_path).to_s
+  end
+
+  def get_partials_path
+    File.join(get_path_to_this_extension, 'partials')
+  end
+
+  def get_path_to_this_extension
+    File.dirname(__FILE__).split('/')[-2..-1].join('/')
   end
 end
 
