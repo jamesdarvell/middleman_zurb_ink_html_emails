@@ -9,8 +9,7 @@ class HtmlEmails < Middleman::Extension
     app.set :partials_dir, partials_path_relative_to_source(app.config)
 
     app.after_render do |content, path, locs, template_class|
-      content = HtmlEmails.prepare_final_page(content) if HtmlEmails.is_top_level_render?(path)
-      content
+      HtmlEmails.is_top_level_render?(path) ? HtmlEmails.prepare_final_page(content) : content
     end
   end
 
