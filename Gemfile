@@ -18,3 +18,5 @@ gem 'nokogiri'
 
 # for interactive debugging via repl
 gem 'pry'
+gem 'pry-stack_explorer'
+gem 'pry-debugger'
