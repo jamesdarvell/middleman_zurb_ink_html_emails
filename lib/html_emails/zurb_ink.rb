@@ -12,4 +12,14 @@ module ZurbInk
 
     return SIZE_RANGE_AS_WORDS[size - 1]
   end
+
+  # move the registration of zurb specific helper methods into this module in order to seperate concerns
+  def self.extended(base)
+    base.helpers do
+      require_relative 'helpers/ink_css_helpers'
+      require_relative 'helpers/ink_basic_helpers'
+      require_relative 'helpers/ink_content_helpers'
+      require_relative 'helpers/ink_grid_helpers'
+    end
+  end
 end

@@ -45,12 +45,6 @@ class HtmlEmails < Middleman::Extension
     end
   end
 
-  helpers do
-    require_relative 'helpers/ink_css_helpers'
-    require_relative 'helpers/ink_basic_helpers'
-    require_relative 'helpers/ink_content_helpers'
-    require_relative 'helpers/ink_grid_helpers'
-  end
 
   private
   def partials_path_relative_to_source(config)
