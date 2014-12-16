@@ -6,7 +6,7 @@
 
     =inline_ink_css
   %body
-    %table.body
+    %table{:class => (classes << 'body').join(' '), :style =>  (style if defined? style)}
       %tr
         %td.center{:align => "center", :valign => "top"}
           %center

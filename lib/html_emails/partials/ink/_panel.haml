@@ -1,2 +1,2 @@
-%td.panel
+%td{:class => (classes << 'panel').join(' '), :style =>  (style if defined? style)}
     = content

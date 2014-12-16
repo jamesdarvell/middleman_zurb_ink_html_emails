@@ -1,4 +1,4 @@
-%table{:class => (classes << 'container').join(' ')}
+%table{:class => (classes << 'container').join(' '), :style =>  (style if defined? style)}
   %tr
     %td
       = content

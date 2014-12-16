@@ -1,5 +1,5 @@
 %td{:class => 'wrapper' + (last ? ' last' : '')  }
-  %table{:class => (classes << [size, 'columns']).join(' ')}
+  %table{:class => (classes << [size, 'columns']).join(' '), :style =>  (style if defined? style)}
     %tr
       = content
       %td.expander
