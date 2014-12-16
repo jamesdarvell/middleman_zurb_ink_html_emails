@@ -1,7 +1,7 @@
-require_relative 'ink_base_module'
+require_relative 'zurb_ink'
 
 class HtmlEmails < Middleman::Extension
-  extend InkBaseModule
+  extend ZurbInk
 
   def initialize(app, options_hash={}, &block)
     super
