@@ -1,18 +1,39 @@
 ---
-title: Full Width Row Example
+title: Sub Column Example
 ---
-=ink_css do
-  body{background-color:#82CCE5;}
 
-= ink_container(:style => 'background-color:white;') do
+= ink_css do
+  :css
+    span{
+      color:#FFF;
+      display:block;
+      font-size:12px;
+      padding:5px 10px;
+      font-family:Courier,monospace;
+    }
+
+    table,tr,td{
+      vertical-align:middle;
+    }
+
+    table.columns td,table.column td{
+      padding:5px 0;
+      height:55px;
+    }
+
+    td.wrapper{
+      padding-top:5px 0;
+    }
+
+= ink_container do
   = ink_row do
-    = ink_column(12) do
-      =ink_content do
-        %h6 Normal Row
-        %p= lorem.sentences 3
+    = ink_column(8) do
+      =ink_sub_column(8, :style=>'background:#002B35;') do
+        %span eight.sub-columns
 
-= ink_full_width_row(:style => 'background-color:white;') do
-  = ink_column(12) do
-    =ink_content do
-      %h6 Full Width Row
-      %p= lorem.sentences 3
+      =ink_sub_column(4, :style=>'background:#28A9C5;') do
+        %span four.sub-columns
+
+    = ink_column(4, :style=>'background:#82CCE5;') do
+      =ink_content do
+        %span four columns
