@@ -11,6 +11,10 @@ def ink_panel(options = {}, &block)
   ink_content(['panel'], options, &block)
 end
 
+def ink_sub_grid_panel(options = {}, &block)
+  return_ink_markup('sub_grid_panel', options, &block)
+end
+
 def ink_center(options = {}, &block)
   ink_content(['center'], options, &block)
 end

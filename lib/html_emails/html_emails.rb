@@ -31,7 +31,7 @@ class HtmlEmails < Middleman::Extension
         w['class'] = (w['class'].split << 'last').join(' ') unless w['class'].include? 'last'
       end
 
-      html_doc.css('.columns td.sub-columns:last-of-type').each do |s|
+      html_doc.css('.columns>tr>td.sub-columns:last-of-type').each do |s|
         s['class'] = (s['class'].split << 'last').join(' ') unless s['class'].include? 'last'
       end
 
