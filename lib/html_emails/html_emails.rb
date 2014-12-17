@@ -16,7 +16,8 @@ class HtmlEmails < Middleman::Extension
   class << self
     def prepare_final_page(content)
       content = add_class_to_last_columns(content)
-      clean_xhtml(content)
+      content = clean_xhtml(content)
+      remove_whitespace_between_block_grid_cells(content)
     end
 
     ##
@@ -50,6 +51,10 @@ class HtmlEmails < Middleman::Extension
 
     def is_top_level_render?(path)
       path.include? 'layout.haml'
+    end
+
+    def remove_whitespace_between_block_grid_cells(content)
+      content.gsub("\n<!-- END OF BLOCK-GRID CELL -->\n", '')
     end
   end
 
