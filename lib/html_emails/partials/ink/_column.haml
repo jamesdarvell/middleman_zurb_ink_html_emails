@@ -1,4 +1,4 @@
-%td{:class => 'wrapper' + (last ? ' last' : '') + ( " offset-by-#{HtmlEmails::size_as_word(offset)}" if defined? offset) }
+%td{:class => 'wrapper' + (last ? ' last' : '') + ((defined? offset )? " offset-by-#{HtmlEmails::size_as_word(offset)}" : '' ) }
   %table{:class => (classes << [size, 'columns']).join(' '), :style =>  (style if defined? style)}
     %tr
       = content
