@@ -1,3 +1,8 @@
+/**********************************************
+* Ink v1.0.5 - Copyright 2014 ZURB Inc *
+**********************************************/
+/* Client-specific Styles and Reset */
+
 #outlook a {
   padding:0; 
 } 
@@ -10,6 +15,8 @@ body{
   margin:0; 
   padding:0;
 }
+
+/* .ExternalClass applies to Outlook.com (the artist formerly known as Hotmail) */
 
 .ExternalClass { 
   width:100%;
@@ -715,6 +722,8 @@ body.outlook p {
     display: inherit !important;
   }
 }
+
+/* Copied from the examples */
 
 body{
   padding-top:25px;
