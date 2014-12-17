@@ -20,6 +20,7 @@ module ZurbInk
       require_relative 'helpers/ink_basic_helpers'
       require_relative 'helpers/ink_content_helpers'
       require_relative 'helpers/ink_grid_helpers'
+      require_relative 'helpers/ink_button_helpers'
     end
   end
 end
