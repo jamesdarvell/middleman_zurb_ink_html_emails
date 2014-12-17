@@ -1,15 +1,29 @@
 ---
 title: Text Padding Example
 ---
-= ink_container do
+=ink_css do
+  body{background-color:#82CCE5;}
+
+= ink_container(:style => 'background-color:white;') do
+  = ink_row do
+    = ink_column(12) do
+      =ink_text_pad do
+        %h6 twelve.columns.text-pad
+        %p= lorem.sentences 3
 
   = ink_row do
-    = ink_column(4) do
-      =ink_left_text_pad do
-        Text
-    = ink_column(4) do
+    = ink_column(12) do
       =ink_content do
-        Text
-    = ink_column(4) do
+        %h6 No .text-pad
+        %p= lorem.sentences 3
+
+  = ink_row do
+    = ink_column(6) do
+      =ink_left_text_pad do
+        %h6 twelve.columns.left-text-pad
+        %p= lorem.sentences 3
+
+    = ink_column(6) do
       =ink_right_text_pad do
-        Text
+        %h6 twelve.columns.right-text-pad
+        %p= lorem.sentences 3
