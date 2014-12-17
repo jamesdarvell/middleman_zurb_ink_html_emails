@@ -15,14 +15,23 @@ class HtmlEmails < Middleman::Extension
 
   class << self
     def prepare_final_page(content)
-      content = apply_last_wrapper_class(content)
+      content = add_class_to_last_columns(content)
       clean_xhtml(content)
     end
 
-    def apply_last_wrapper_class(content)
+    ##
+    # The last class is used on the last column to apply correct padding (so gutters are correct).
+    # For the "grid" system, this applies to the wrapper td which contains the column.
+    # For the sub-column grid, it is applied directly to the "sub-columns" td
+    ##
+    def add_class_to_last_columns(content)
       html_doc = Nokogiri::HTML(content)
       html_doc.css('.row td.wrapper:last-of-type').each do |w|
         w['class'] = (w['class'].split << 'last').join(' ') unless w['class'].include? 'last'
+      end
+
+      html_doc.css('.columns td.sub-columns:last-of-type').each do |s|
+        s['class'] = (s['class'].split << 'last').join(' ') unless s['class'].include? 'last'
       end
 
       html_doc.to_xhtml
