@@ -1,5 +1,5 @@
-def ink_boilerplate(&block)
-  return_ink_markup('boilerplate', {}, &block)
+def ink_boilerplate(options = {}, &block)
+  return_ink_markup('boilerplate', options, &block)
 end
 
 def ink_content(types = [], options = {}, &block)
