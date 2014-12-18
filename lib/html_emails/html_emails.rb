@@ -1,4 +1,5 @@
 require_relative 'zurb_ink'
+require 'numbers_in_words/duck_punch'
 
 class HtmlEmails < Middleman::Extension
   extend ZurbInk
@@ -16,6 +17,7 @@ class HtmlEmails < Middleman::Extension
   class << self
     def prepare_final_page(content)
       content = add_class_to_last_columns(content)
+      content = set_attributes_for_ink_images(content)
       content = clean_xhtml(content)
       remove_whitespace_between_block_grid_cells(content)
     end
@@ -36,6 +38,62 @@ class HtmlEmails < Middleman::Extension
       end
 
       html_doc.to_xhtml
+    end
+
+    ##
+    # Ink images should have explicit width and height attributes.
+    # The width should match the width of the containing column.
+    # The height should be scaled down from the original height so that aspect ratio is maintained.
+    #
+    # This method must:
+    #   1: Find the containing column (first column among ancestors) and look up its the pixel width
+    #   2: Calculate the scaled height of the image
+    #   3: Assign the attributes using the calculated width and height
+    #   4: Remove the ink_image html class - this was only included to allow this method to find the img
+    #
+    ##
+    def set_attributes_for_ink_images(content)
+      html_doc = Nokogiri::HTML(content)
+      html_doc.css('.ink_image').each do |img|
+
+        width = pix_width_of_containing_column(img)
+        height = scaled_height_of_image(img[:src], width)
+
+        img[:width] = width
+        img[:height] = height
+        img[:class] = img[:class].gsub('ink_image', '')
+      end
+
+      html_doc.to_xhtml
+    end
+
+    ##
+    # This method returns the correct width to set on the image.
+    # This is the width of the containing column. It is calculated by:
+    #  1: Finding the containing column (first column among ancestors)
+    #  2: Looking up its the pixel width from the table defined in INK_COLUMN_WIDTHS
+    ##
+    def pix_width_of_containing_column(img)
+      column = img.ancestors('.columns').first
+      col_width = (column['class'].split & SIZE_RANGE_AS_WORDS).first.in_numbers
+
+      INK_COLUMN_WIDTHS[col_width]
+    end
+
+    ##
+    # This method will return the desired height of the image.
+    # It is calculated by:
+    # 1: Downloading the image
+    # 2: Finding the ratio of the original width to the new width
+    # 3: Applying this ratio to the original height
+    ##
+    def scaled_height_of_image(src, width)
+      w,h = 0,1
+
+      dimensions = FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
+      scale = width.to_f / dimensions[w]
+
+      (dimensions[h] * scale).to_i
     end
 
     def clean_xhtml(content)
