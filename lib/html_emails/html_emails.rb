@@ -19,6 +19,7 @@ class HtmlEmails < Middleman::Extension
       content = add_class_to_last_columns(content)
       content = set_attributes_for_ink_images(content)
       content = clean_xhtml(content)
+      content = inline_css(content)
       remove_whitespace_between_block_grid_cells(content)
     end
 
@@ -67,37 +68,37 @@ class HtmlEmails < Middleman::Extension
       html_doc.to_xhtml
     end
 
-    ##
-    # This method returns the correct width to set on the image.
-    # This is the width of the containing column. It is calculated by:
-    #  1: Finding the containing column (first column among ancestors)
-    #  2: Looking up its the pixel width from the table defined in INK_COLUMN_WIDTHS
-    ##
-    def pix_width_of_containing_column(img)
-      column = img.ancestors('.columns').first
-      col_width = (column['class'].split & SIZE_RANGE_AS_WORDS).first.in_numbers
+      ##
+      # This method returns the correct width to set on the image.
+      # This is the width of the containing column. It is calculated by:
+      #  1: Finding the containing column (first column among ancestors)
+      #  2: Looking up its the pixel width from the table defined in INK_COLUMN_WIDTHS
+      ##
+      def pix_width_of_containing_column(img)
+        column = img.ancestors('.columns').first
+        col_width = (column['class'].split & SIZE_RANGE_AS_WORDS).first.in_numbers
 
-      INK_COLUMN_WIDTHS[col_width]
-    end
+        INK_COLUMN_WIDTHS[col_width]
+      end
 
-    ##
-    # This method will return the desired height of the image.
-    # It is calculated by:
-    # 1: Downloading the image
-    # 2: Finding the ratio of the original width to the new width
-    # 3: Applying this ratio to the original height
-    ##
-    def scaled_height_of_image(src, width)
-      w,h = 0,1
+      ##
+      # This method will return the desired height of the image.
+      # It is calculated by:
+      # 1: Downloading the image
+      # 2: Finding the ratio of the original width to the new width
+      # 3: Applying this ratio to the original height
+      ##
+      def scaled_height_of_image(src, width)
+        w,h = 0,1
 
-      dimensions = FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
-      scale = width.to_f / dimensions[w]
+        dimensions = FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
+        scale = width.to_f / dimensions[w]
 
-      (dimensions[h] * scale).to_i
-    end
+        (dimensions[h] * scale).to_i
+      end
 
     def clean_xhtml(content)
-      content = content.sub('<![CDATA[', '').sub(']]>', '')
+      content = content.gsub(/(\/\*)?(<!\[CDATA\[>?|\]+>)(\*\/)?/ ,'')
       # this lovely hack was made necessary by a libxml2 bug
 
       strip_lines(content)
@@ -109,6 +110,19 @@ class HtmlEmails < Middleman::Extension
 
     def is_top_level_render?(path)
       path.include? 'layout.haml'
+    end
+
+    def inline_css(content)
+      premailer = Premailer.new(content, :with_html_string => true)
+      content = premailer.to_inline_css
+
+      # move the style tag beck into the head - premailer moves it into the body, which is crazy
+      html_doc = Nokogiri::HTML(content)
+      head = html_doc.at_css('head')
+      style = html_doc.at_css('style')
+      style.parent = head
+
+      clean_xhtml(html_doc.to_xhtml)
     end
 
     def remove_whitespace_between_block_grid_cells(content)
