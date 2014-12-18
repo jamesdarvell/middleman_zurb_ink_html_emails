@@ -1,4 +1,4 @@
-%table{:class => classes.join(' '), :style =>  (style if defined? style)}
+%table{:class => classes.compact.join(' '), :style =>  (style if defined? style)}
   %tr
     %td
       %a{:href => href}
