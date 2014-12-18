@@ -26,3 +26,6 @@ gem 'numbers_in_words'
 
 # for working out image dimensions from an image url
 gem 'fastimage'
+
+# for inlining all the css
+gem 'premailer'
