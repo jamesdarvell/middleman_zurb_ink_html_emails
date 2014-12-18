@@ -20,3 +20,9 @@ gem 'nokogiri'
 gem 'pry'
 gem 'pry-stack_explorer'
 gem 'pry-debugger'
+
+# for dealing with numbers as words, and vice-versa
+gem 'numbers_in_words'
+
+# for working out image dimensions from an image url
+gem 'fastimage'
