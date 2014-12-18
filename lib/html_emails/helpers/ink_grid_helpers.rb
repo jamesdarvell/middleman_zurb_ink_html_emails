@@ -1,13 +1,16 @@
 def ink_container(options = {}, &block)
+  check_options_valid(options)
   return_ink_markup('container', options, &block)
 end
 
 def ink_row(options = {}, &block)
+  check_options_valid(options)
   return_ink_markup('row', options, &block)
 end
 
 def ink_column(size, options = {}, &block)
   throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+  check_options_valid(options)
 
   options[:size] = HtmlEmails.size_as_word(size)
   options[:last] ||= false
@@ -16,11 +19,13 @@ def ink_column(size, options = {}, &block)
 end
 
 def ink_full_width_row(options = {}, &block)
+  check_options_valid(options)
   return_ink_markup('full_width_row', options, &block)
 end
 
 def ink_sub_column(size, options = {}, &block)
   throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+  check_options_valid(options)
 
   options[:size] = HtmlEmails.size_as_word(size)
   options[:last] ||= false
@@ -30,6 +35,7 @@ end
 
 def ink_block_grid(size, options = {}, &block)
   throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+  check_options_valid(options)
 
   options[:size] = HtmlEmails.size_as_word(size)
 
@@ -38,5 +44,6 @@ def ink_block_grid(size, options = {}, &block)
 end
 
 def ink_block_grid_cell(options = {}, &block)
+  check_options_valid(options)
   return_ink_markup('block_grid_cell', options, &block)
 end

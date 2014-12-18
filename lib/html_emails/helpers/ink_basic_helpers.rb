@@ -12,3 +12,7 @@ def build_locals_hash(options, &block)
     :content => capture_html(&block)
   })
 end
+
+def check_options_valid(options)
+  raise 'The options parameter must be a hash' unless options.is_a? Hash
+end

@@ -1,6 +1,8 @@
 BUTTON_STYLES = %w{button small-button tiny-button medium-button large-button}
 
 def ink_button(options = {}, &block)
+  check_options_valid(options)
+
   options[:href] ||= '#'
 
   options[:classes] ||= []
