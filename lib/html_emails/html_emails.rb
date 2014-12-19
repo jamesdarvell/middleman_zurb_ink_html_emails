@@ -116,13 +116,7 @@ class HtmlEmails < Middleman::Extension
       premailer = Premailer.new(content, :with_html_string => true)
       content = premailer.to_inline_css
 
-      # move the style tag beck into the head - premailer moves it into the body, which is crazy
-      html_doc = Nokogiri::HTML(content)
-      head = html_doc.at_css('head')
-      style = html_doc.at_css('style')
-      style.parent = head
-
-      clean_xhtml(html_doc.to_xhtml)
+      clean_xhtml(content)
     end
 
     def remove_whitespace_between_block_grid_cells(content)
