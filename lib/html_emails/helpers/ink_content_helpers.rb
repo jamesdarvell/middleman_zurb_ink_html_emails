@@ -24,6 +24,11 @@ def ink_center(options = {}, &block)
   ink_content(['center'], options, &block)
 end
 
+def ink_center_row(options = {}, &block)
+  check_options_valid(options)
+  ink_content(%w(center row), options, &block)
+end
+
 def ink_text_pad(options = {}, &block)
   check_options_valid(options)
   ink_content(['text-pad'], options, &block)
