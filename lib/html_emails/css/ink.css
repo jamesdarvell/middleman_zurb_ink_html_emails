@@ -725,11 +725,6 @@ body.outlook p {
 
 /* Copied from the examples */
 
-body{
-  padding-top:25px;
-  padding-bottom:25px;
-}
-
 @media only screen and (max-width: 600px){
   table[class="body"] .row tr,table[class="body"] .row tbody{
     display:block;
