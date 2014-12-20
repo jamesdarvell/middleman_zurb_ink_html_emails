@@ -23,6 +23,11 @@ def ink_full_width_row(options = {}, &block)
   return_ink_markup('full_width_row', options, &block)
 end
 
+def ink_section(options = {}, &block)
+  check_options_valid(options)
+  return_ink_markup('section', options, &block)
+end
+
 def ink_sub_column(size, options = {}, &block)
   throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
   check_options_valid(options)
