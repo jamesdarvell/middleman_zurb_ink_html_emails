@@ -100,7 +100,6 @@ class HtmlEmails < Middleman::Extension
       end
 
       def get_image_size(src)
-        binding.pry
         @@image_dimensions[src] ||= FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
       end
 
