@@ -7,6 +7,8 @@ class HtmlEmails < Middleman::Extension
   def initialize(app, options_hash={}, &block)
     super
 
+    @@image_dimensions = {}
+
     app.set :partials_dir, partials_path_relative_to_source(app.config)
 
     app.after_render do |content, path, locs, template_class|
@@ -91,10 +93,15 @@ class HtmlEmails < Middleman::Extension
       def scaled_height_of_image(src, width)
         w,h = 0,1
 
-        dimensions = FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
+        dimensions = get_image_size(src)
         scale = width.to_f / dimensions[w]
 
         (dimensions[h] * scale).to_i
+      end
+
+      def get_image_size(src)
+        binding.pry
+        @@image_dimensions[src] ||= FastImage.size(src, :raise_on_failure=>true, :timeout=>5)
       end
 
     def clean_xhtml(content)
