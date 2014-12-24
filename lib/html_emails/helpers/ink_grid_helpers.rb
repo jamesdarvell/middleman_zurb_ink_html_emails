@@ -1,5 +1,6 @@
 module InkGridHelpers
   include ::InkBasicHelpers
+  include ::ColumnSizes
 
   def ink_container(options = {}, &block)
     check_options_valid(options)
@@ -12,10 +13,10 @@ module InkGridHelpers
   end
 
   def ink_column(size, options = {}, &block)
-    throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+    throw ZurbInk::SIZE_WRONG unless size_valid?(size)
     check_options_valid(options)
 
-    options[:size] = HtmlEmails.size_as_word(size)
+    options[:size] = size_as_word(size)
     options[:last] ||= false
 
     return_ink_markup('column', options, &block)
@@ -40,29 +41,29 @@ module InkGridHelpers
   end
 
   def ink_stacked_column(size, options = {}, &block)
-    throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+    throw ZurbInk::SIZE_WRONG unless size_valid?(size)
     check_options_valid(options)
 
-    options[:size] = HtmlEmails.size_as_word(size)
+    options[:size] = size_as_word(size)
 
     return_ink_markup('stacked_column', options, &block)
   end
 
   def ink_sub_column(size, options = {}, &block)
-    throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+    throw ZurbInk::SIZE_WRONG unless size_valid?(size)
     check_options_valid(options)
 
-    options[:size] = HtmlEmails.size_as_word(size)
+    options[:size] = size_as_word(size)
     options[:last] ||= false
 
     return_ink_markup('sub_column', options, &block)
   end
 
   def ink_block_grid(size, options = {}, &block)
-    throw HtmlEmails.SIZE_WRONG unless HtmlEmails.size_valid?(size)
+    throw ZurbInk::SIZE_WRONG unless size_valid?(size)
     check_options_valid(options)
 
-    options[:size] = HtmlEmails.size_as_word(size)
+    options[:size] = size_as_word(size)
 
     return_ink_markup('block_grid', options, &block)
 
