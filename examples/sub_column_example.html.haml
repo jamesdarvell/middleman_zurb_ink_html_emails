@@ -1,39 +1,39 @@
 ---
 title: Sub Column Example
 ---
+= ink_boilerplate do
+  = ink_css do
+    :css
+      span{
+        color:#FFF;
+        display:block;
+        font-size:12px;
+        padding:5px 10px;
+        font-family:Courier,monospace;
+      }
 
-= ink_css do
-  :css
-    span{
-      color:#FFF;
-      display:block;
-      font-size:12px;
-      padding:5px 10px;
-      font-family:Courier,monospace;
-    }
+      table,tr,td{
+        vertical-align:middle;
+      }
 
-    table,tr,td{
-      vertical-align:middle;
-    }
+      table.columns td,table.column td{
+        padding:5px 0;
+        height:55px;
+      }
 
-    table.columns td,table.column td{
-      padding:5px 0;
-      height:55px;
-    }
+      td.wrapper{
+        padding-top:5px 0;
+      }
 
-    td.wrapper{
-      padding-top:5px 0;
-    }
+  = ink_container do
+    = ink_row do
+      = ink_column(8) do
+        =ink_sub_column(8, :style=>'background:#002B35;') do
+          %span eight.sub-columns
 
-= ink_container do
-  = ink_row do
-    = ink_column(8) do
-      =ink_sub_column(8, :style=>'background:#002B35;') do
-        %span eight.sub-columns
+        =ink_sub_column(4, :style=>'background:#28A9C5;') do
+          %span four.sub-columns
 
-      =ink_sub_column(4, :style=>'background:#28A9C5;') do
-        %span four.sub-columns
-
-    = ink_column(4, :style=>'background:#82CCE5;') do
-      =ink_content do
-        %span four columns
+      = ink_column(4, :style=>'background:#82CCE5;') do
+        =ink_content do
+          %span four columns

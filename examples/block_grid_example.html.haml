@@ -2,65 +2,66 @@
 title: Block-Grid Example
 ---
 
-=ink_css do
-  :css
-    span{
-      color:#FFF;
-      display:block;
-      font-size:12px;
-      padding:5px 10px;
-      font-family:Courier,monospace;
-    }
+= ink_boilerplate do
+  =ink_css do
+    :css
+      span{
+        color:#FFF;
+        display:block;
+        font-size:12px;
+        padding:5px 10px;
+        font-family:Courier,monospace;
+      }
 
-    table,tr,td{
-      vertical-align:middle;
-    }
+      table,tr,td{
+        vertical-align:middle;
+      }
 
-    table.columns td,table.column td{
-      padding:5px 0;
-      height:55px;
-    }
+      table.columns td,table.column td{
+        padding:5px 0;
+        height:55px;
+      }
 
-    td.wrapper{
-      padding-top:5px 0;
-    }
+      td.wrapper{
+        padding-top:5px 0;
+      }
 
-    table.block-grid{
-      margin:10px 0px;
-    }
+      table.block-grid{
+        margin:10px 0px;
+      }
 
-= ink_container do
-  =ink_block_grid(2) do
-    -2.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .two.up
+  = ink_container do
+    =ink_block_grid(2) do
+      -2.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .two.up
 
-  =ink_block_grid(3) do
-    -3.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .three.up
+    =ink_block_grid(3) do
+      -3.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .three.up
 
-  =ink_block_grid(4) do
-    -4.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .four.up
+    =ink_block_grid(4) do
+      -4.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .four.up
 
-  =ink_block_grid(5) do
-    -5.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .four.up
+    =ink_block_grid(5) do
+      -5.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .four.up
 
-  =ink_block_grid(6) do
-    -6.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .six.up
+    =ink_block_grid(6) do
+      -6.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .six.up
 
-  =ink_block_grid(7) do
-    -7.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .seven.up
+    =ink_block_grid(7) do
+      -7.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .seven.up
 
-  =ink_block_grid(8) do
-    -8.times do |n|
-      =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
-        %span .eight.up
+    =ink_block_grid(8) do
+      -8.times do |n|
+        =ink_block_grid_cell(:style=>( (n%2 == 1) ? 'background:#002B35;' : 'background:#28A9C5;')) do
+          %span .eight.up

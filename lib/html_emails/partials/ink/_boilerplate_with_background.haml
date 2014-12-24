@@ -1,0 +1,18 @@
+!!! Strict
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width", :name => "viewport"}/
+
+    =inline_ink_css
+  %body
+    %div{:style=>bg_col}
+      \[if gte mso 9]
+        %v:background{'xmlns:v'.to_sym=>'urn:schemas-microsoft-com:vml', :fill=>'t'}
+          %v:fill{:type=>'tile', :src=>bg_img, :color=>bg_col }
+      %table{:class => (classes << 'body').join(' '), :style =>  (style if defined? style)}
+        %tr
+          %td.center{:align => "center", :valign => "top", :background => bg_img}
+            %center
+
+              =content

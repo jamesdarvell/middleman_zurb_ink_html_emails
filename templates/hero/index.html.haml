@@ -1,71 +1,72 @@
-=ink_css do
-  =partial '_partials/custom_css'
+= ink_boilerplate do
+  =ink_css do
+    =partial '_partials/custom_css'
 
-= ink_full_width_row(:class=>'header') do
-  =ink_column(12) do
-    =ink_sub_column(6) do
-      %img{:src=>'http://placehold.it/200x50'}
-
-    =ink_sub_column(6, :style=>'text-align:right; vertical-align:middle;') do
-      %span.template-label HERO
-%br
-
-= ink_container do
-  =ink_row do
+  = ink_full_width_row(:class=>'header') do
     =ink_column(12) do
-      =ink_content do
-        %h1 Hi Elijah Baily
-        %p.lead= lorem.sentence
-        =ink_image(:src=>'http://placehold.it/580x300')
+      =ink_sub_column(6) do
+        %img{:src=>'http://placehold.it/200x50'}
 
-  =ink_row(:class=>'callout') do
-    =ink_column(12) do
-      =ink_panel do
-        %p
-          =lorem.sentences 2
-          %a{:href=>'#'} Click it >>
+      =ink_sub_column(6, :style=>'text-align:right; vertical-align:middle;') do
+        %span.template-label HERO
+  %br
 
-  =ink_row do
-    =ink_column(12) do
-      =ink_content do
-        %h3
-          Title Ispum
-          %small This is a note.
-        %p
-          =lorem.sentences 8
+  = ink_container do
+    =ink_row do
+      =ink_column(12) do
+        =ink_content do
+          %h1 Hi Elijah Baily
+          %p.lead= lorem.sentence
+          =ink_image(:src=>'http://placehold.it/580x300')
 
-  =ink_row do
-    =ink_column(3) do
-      =ink_content do
-        =ink_button(:href=>'#') do
-          Click Me!
+    =ink_row(:class=>'callout') do
+      =ink_column(12) do
+        =ink_panel do
+          %p
+            =lorem.sentences 2
+            %a{:href=>'#'} Click it >>
 
-  =ink_row(:class=>'footer') do
-    =ink_column(6) do
-      =ink_left_text_pad do
-        %h5 Connect With Us
-        =ink_button(:size=>'tiny', :class=>'facebook') do
-          Facebook
-        %br
-        =ink_button(:size=>'tiny', :class=>'twitter') do
-          Twitter
-        %br
-        =ink_button(:size=>'tiny', :class=>'google-plus') do
-          Google+
+    =ink_row do
+      =ink_column(12) do
+        =ink_content do
+          %h3
+            Title Ispum
+            %small This is a note.
+          %p
+            =lorem.sentences 8
 
-    =ink_column(6) do
-      =ink_right_text_pad do
-        %h5 Contact Info:
-        %p Phone: 408.341.0600
-        %p
-          Email:
-          %a{:href=>'mailto:hseldon@trantor.com'} hseldon@trantor.com
+    =ink_row do
+      =ink_column(3) do
+        =ink_content do
+          =ink_button(:href=>'#') do
+            Click Me!
 
-  =ink_row do
-    =ink_column(12) do
-      =ink_center do
-        %a{:href=>'#'} Terms
-        |
-        %a{:href=>'#'} Privacy
-        |
-        %a{:href=>'#'} Unsubscribe
+    =ink_row(:class=>'footer') do
+      =ink_column(6) do
+        =ink_left_text_pad do
+          %h5 Connect With Us
+          =ink_button(:size=>'tiny', :class=>'facebook') do
+            Facebook
+          %br
+          =ink_button(:size=>'tiny', :class=>'twitter') do
+            Twitter
+          %br
+          =ink_button(:size=>'tiny', :class=>'google-plus') do
+            Google+
+
+      =ink_column(6) do
+        =ink_right_text_pad do
+          %h5 Contact Info:
+          %p Phone: 408.341.0600
+          %p
+            Email:
+            %a{:href=>'mailto:hseldon@trantor.com'} hseldon@trantor.com
+
+    =ink_row do
+      =ink_column(12) do
+        =ink_center do
+          %a{:href=>'#'} Terms
+          |
+          %a{:href=>'#'} Privacy
+          |
+          %a{:href=>'#'} Unsubscribe

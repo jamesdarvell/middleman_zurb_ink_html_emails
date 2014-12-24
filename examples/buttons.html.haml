@@ -1,49 +1,49 @@
 ---
 title: Button Example
 ---
+= ink_boilerplate do
+  = ink_container do
+    = ink_row do
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:size=>:tiny) do
+            tiny button
 
-= ink_container do
-  = ink_row do
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:size=>:tiny) do
-          tiny button
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:size=>:small) do
+            Button Label
 
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:size=>:small) do
-          Button Label
+    =ink_row do
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:size=>:medium) do
+            medium button
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:size=>:large) do
+            large button
 
-  =ink_row do
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:size=>:medium) do
-          medium button
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:size=>:large) do
-          large button
+    =ink_row do
+      = ink_column(4) do
+        = ink_content do
+          = ink_button(:color => :secondary) do
+            secondary
+      = ink_column(4) do
+        = ink_content do
+          = ink_button(:color => :alert) do
+            alert
+      = ink_column(4) do
+        = ink_content do
+          = ink_button(:color => :success) do
+            success
 
-  =ink_row do
-    = ink_column(4) do
-      = ink_content do
-        = ink_button(:color => :secondary) do
-          secondary
-    = ink_column(4) do
-      = ink_content do
-        = ink_button(:color => :alert) do
-          alert
-    = ink_column(4) do
-      = ink_content do
-        = ink_button(:color => :success) do
-          success
-
-  =ink_row do
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:radius=>:radius) do
-          radius
-    = ink_column(6) do
-      = ink_content do
-        = ink_button(:radius=>:round) do
-          round
+    =ink_row do
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:radius=>:radius) do
+            radius
+      = ink_column(6) do
+        = ink_content do
+          = ink_button(:radius=>:round) do
+            round

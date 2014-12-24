@@ -1,10 +1,11 @@
-= ink_css do
-  =partial '_partials/_structure/custom_css'
+= ink_boilerplate do
+  = ink_css do
+    =partial '_partials/_structure/custom_css'
 
-=partial '_partials/_structure/header'
+  =partial '_partials/_structure/header'
 
-= ink_container do
-  =partial '_partials/_structure/main_row'
-  =partial '_partials/_structure/callout_row'
-  =partial '_partials/_structure/footer_row'
-  =partial '_partials/_structure/links_row'
+  = ink_container do
+    =partial '_partials/_structure/main_row'
+    =partial '_partials/_structure/callout_row'
+    =partial '_partials/_structure/footer_row'
+    =partial '_partials/_structure/links_row'
