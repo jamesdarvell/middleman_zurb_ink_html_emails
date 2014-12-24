@@ -1,0 +1,73 @@
+=ink_css do
+  =partial '_partials/custom_css'
+
+= ink_full_width_row(:class=>'header') do
+  =ink_column(12) do
+    =ink_sub_column(6) do
+      %img{:src=>'http://placehold.it/200x50'}
+
+    =ink_sub_column(6, :style=>'text-align:right; vertical-align:middle;') do
+      %span.template-label SIDEBAR HERO
+%br
+
+= ink_container do
+  =ink_row do
+    =ink_column(12) do
+      =ink_content do
+        %h1 Welcome, Daneel Olivan
+        %p= lorem.sentence
+        =ink_image(:src=>'http://placehold.it/580x300')
+
+  =ink_row do
+    =ink_column(12) do
+      =ink_panel do
+        %p
+          =lorem.sentences 2
+          %a{:href=>'#'} Click it >>
+
+  =ink_row do
+    =ink_wrapper do
+      =ink_stacked_column(6) do
+        =ink_content do
+          %p= lorem.sentences 2
+          %p= lorem.sentences 3
+          =ink_button do
+            Click Me!
+
+    =ink_wrapper do
+      =ink_stacked_column(6) do
+        =ink_panel do
+          %h6 Header Thing
+          %p Sub-head or something
+          -7.times do |n|
+            =ink_section do
+              %a{:href=>'#'} Just a Plain link >>
+            -if n != 7
+              %hr
+      %br
+      =ink_stacked_column(6) do
+        =ink_panel do
+          %h5 Connect With Us
+          =ink_button(:size=>'tiny', :class=>'facebook') do
+            Facebook
+          %br
+          =ink_button(:size=>'tiny', :class=>'twitter') do
+            Twitter
+          %br
+          =ink_button(:size=>'tiny', :class=>'google-plus') do
+            Google+
+          %br
+          %h5 Contact Info:
+          %p Phone: 408.341.0600
+          %p
+            Email:
+            %a{:href=>'mailto:hseldon@trantor.com'} hseldon@trantor.com
+
+  =ink_row do
+    =ink_column(12) do
+      =ink_center do
+        %a{:href=>'#'} Terms
+        |
+        %a{:href=>'#'} Privacy
+        |
+        %a{:href=>'#'} Unsubscribe
