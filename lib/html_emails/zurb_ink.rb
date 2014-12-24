@@ -1,3 +1,10 @@
+require_relative 'helpers/ink_basic_helpers'
+require_relative 'helpers/ink_css_helpers'
+require_relative 'helpers/ink_content_helpers'
+require_relative 'helpers/ink_grid_helpers'
+require_relative 'helpers/ink_button_helpers'
+require_relative 'helpers/ink_image_helpers'
+
 module ZurbInk
   SIZE_WRONG = 'Size must be an integer between 1 and 12 (or a number in the same range written as a word)'
   SIZE_RANGE = (1..12)
@@ -14,15 +21,9 @@ module ZurbInk
     return SIZE_RANGE_AS_WORDS[size - 1]
   end
 
-  # move the registration of zurb specific helper methods into this module in order to seperate concerns
+  # zurb ink specific helpers are defined in these specific modules. They are added to the HtmlEmail extension when it
+  # extends the ZurbInk module.
   def self.extended(base)
-    base.helpers do
-      require_relative 'helpers/ink_css_helpers'
-      require_relative 'helpers/ink_basic_helpers'
-      require_relative 'helpers/ink_content_helpers'
-      require_relative 'helpers/ink_grid_helpers'
-      require_relative 'helpers/ink_button_helpers'
-      require_relative 'helpers/ink_image_helpers'
-    end
+    base.helpers(InkButtonHelpers, InkButtonHelpers, InkContentHelpers, InkCssHelpers, InkGridHelpers, InkImageHelpers)
   end
 end

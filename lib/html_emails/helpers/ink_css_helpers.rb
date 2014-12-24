@@ -1,19 +1,23 @@
-def inline_ink_css
-  ink_css =   IO.read(File.dirname(__FILE__) + '/../css/ink.css')
-  ink_css +=  @user_css if @user_css
+module InkCssHelpers
+  include ::InkBasicHelpers
 
-  "<style type='text/css'>#{minimize_css(ink_css)}</style>"
-end
+  def inline_ink_css
+    ink_css =   IO.read(File.dirname(__FILE__) + '/../css/ink.css')
+    ink_css +=  @user_css if @user_css
 
-def ink_css(&block)
-  @user_css = (@user_css || '') + remove_cdata(capture_html(&block).gsub(/<[\/]?style[^>]*>/, ''))
-  ''
-end
+    "<style type='text/css'>#{minimize_css(ink_css)}</style>"
+  end
 
-def minimize_css(css)
-  css.gsub("\n", '').gsub(/\/\**[^*]*\**\//, '').gsub(/\s*([}{;:!,])\s*/, '\1' )
-end
+  def ink_css(&block)
+    @user_css = (@user_css || '') + remove_cdata(capture_html(&block).gsub(/<[\/]?style[^>]*>/, ''))
+    ''
+  end
 
-def remove_cdata(css)
-  css.gsub(/(\/\*)?(<!\[CDATA\[>?|\]+>)(\*\/)?/ ,'')
+  def minimize_css(css)
+    css.gsub("\n", '').gsub(/\/\**[^*]*\**\//, '').gsub(/\s*([}{;:!,])\s*/, '\1' )
+  end
+
+  def remove_cdata(css)
+    css.gsub(/(\/\*)?(<!\[CDATA\[>?|\]+>)(\*\/)?/ ,'')
+  end
 end
