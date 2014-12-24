@@ -1,4 +1,4 @@
-%table
+%table{:width => '100%'}
   %tr
-    %td
+    %td{:class => classes.join(' '), :style => (style if defined? style)}
       =content
